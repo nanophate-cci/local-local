@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: localstack/localstack
+      - image: cimg/redis:6.0
     steps:
       - checkout
       - run: echo "hello wowwaaa"
