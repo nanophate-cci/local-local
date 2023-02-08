@@ -2,6 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
+      - image: google/cloud-sdk:emulators
       - image: localstack/localstack
       - image: cimg/redis:6.0
     steps:
