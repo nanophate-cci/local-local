@@ -2,10 +2,15 @@ version: 2.1
 jobs:
   build:
     docker:
+      - image: circleci/mysql:5.7.37-ram
+        command: "--max_connections=2000 --innodb-print-all-deadlocks"
       - image: google/cloud-sdk:emulators
+        command: "gcloud beta emulators bigtable start --host-port=0.0.0.0:8186"
       - image: google/cloud-sdk:emulators
+        command: "gcloud beta emulators pubsub start --host-port=0.0.0.0:8185"
       - image: localstack/localstack
       - image: cimg/redis:6.0
+        command: "redis-server --port 6779"
     steps:
       - checkout
       - run: echo "hello wowwaaa"
